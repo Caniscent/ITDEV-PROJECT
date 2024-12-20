@@ -54,16 +54,10 @@ class MealPlanController extends Controller
         $mealPlanCount = $measurement->mealPlans()->count();
 
         if ($mealPlanCount < 7) {
+            $weeklyMealPlan = $this->geneticAlgorithm->generateMealPlan($personalNeed);
             foreach ($days as $day) {
-                $weeklyMealPlan = $this->geneticAlgorithm->generateMealPlan($personalNeed);
-                $this->geneticAlgorithm->saveMealPlan($measurement->id,$userId, $day, $weeklyMealPlan[$day]);
-                $mealPlanLog = new MealPlanLogModel();
-                $mealPlanLog->user_id = $userId;
-                $mealPlanLog->day = $day;
-                $mealPlanLog->meal_plan = json_encode($weeklyMealPlan[$day]);
-                $mealPlanLog->created_at = now();
-                $mealPlanLog->updated_at = now();
-                $mealPlanLog->save();
+                $this->geneticAlgorithm->saveMealPlan($measurement->first()->id,$userId, $day, $weeklyMealPlan[$day]);
+
            }
         }
 
@@ -134,7 +128,14 @@ class MealPlanController extends Controller
         foreach ($days as $day) {
             $weeklyMealPlan = $this->geneticAlgorithm->generateMealPlan($personalNeed);
             $this->geneticAlgorithm->saveMealPlan($measurement->id, $user->id, $day, $weeklyMealPlan[$day]);
-        }
+            $mealPlanLog = new MealPlanLogModel();
+            $mealPlanLog->user_id = $user->id;
+            $mealPlanLog->day = $day;
+            $mealPlanLog->meal_plan = json_encode($weeklyMealPlan[$day]);
+            $mealPlanLog->created_at = now();
+            $mealPlanLog->updated_at = now();
+            $mealPlanLog->save();
+    }
 
 
         return redirect()->route('meal-plan.index')->with('success','Berhasil membuat rencana makan');
@@ -203,7 +204,7 @@ class MealPlanController extends Controller
             $mealPlanLog->save();
         }
 
-        return redirect()->route('meal-plan.index');
+        return redirect()->route('meal-plan.index')->with('success','Berhasil memperbarui rencana makan');
     }
 
 
@@ -220,7 +221,7 @@ class MealPlanController extends Controller
             $measurement->delete();
         }
 
-        return redirect()->route('meal-plan.index');
+        return redirect()->route('meal-plan.index')->with('success','Berhasil menghapus rencana makan');
     }
 
 
