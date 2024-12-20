@@ -25,22 +25,14 @@ class FoodGroupRequest extends FormRequest
         $idg = $this->route('food_group');
         return [
             'group' => [
-                'required',
-                'string',
-                'max:255',
-                'min:5',
-                'regex:/^[a-zA-Z\s]+$/u',
-                Rule::unique('food_groups', 'group')->ignore($idg), 
+                'required', 'string', 'max:255', 'min:5',
+                'regex:/^[a-zA-Z\s]+$/u', Rule::unique('food_groups', 'group')->ignore($idg),
             ],
             'status' => [
-                'nullable',
-                'boolean'
+                'nullable','boolean'
             ],
             'description' => [
-                'required',
-                'min:10',
-                'max:255',
-                'string',
+                'required', 'min:10', 'max:255', 'string',
             ],
         ];
     }

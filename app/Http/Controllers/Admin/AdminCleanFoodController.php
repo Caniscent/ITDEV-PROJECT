@@ -40,7 +40,6 @@ class AdminCleanFoodController extends Controller
             'page_meta' => [
                 'url' => route('admin.clean-food.store'),
                 'title' => 'Tambah Makanan',
-                // 'desctiption' => 'lorem Ipsum',
                 'submit_text' => 'Kirim',
                 'method' => 'post',
             ],
@@ -112,6 +111,7 @@ class AdminCleanFoodController extends Controller
     }
     public function import(Request $request)
     {
+        
         Excel::import(new FoodImport, $request->file('import'));
         return redirect()
         ->route('admin.clean-food.index')

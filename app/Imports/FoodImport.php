@@ -21,7 +21,6 @@ class FoodImport implements ToCollection, WithHeadingRow
         // dd($rows);
         foreach ($rows as $row) {
             $foodGroup = FoodGroupModel::where('group', $row['group'])->first();
-            // dd($foodGroup);
             $foodType = FoodTypeModel::where('type', $row['type'])->first();
             if ($foodGroup && $foodType) {
                 CleanFoodModel::create([
@@ -36,9 +35,6 @@ class FoodImport implements ToCollection, WithHeadingRow
                 ]);
             }
         }
-
-
-        // Return null jika data tidak valid
         return null;
     }
 }

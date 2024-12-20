@@ -29,7 +29,6 @@ class AdminFoodGroupController extends Controller
             'page_meta' => [
             'url' => route('admin.food-group.store'),
                 'title' => 'Tambah Jenis',
-                // 'desctiption' => 'lorem Ipsum',
                 'submit_text' => 'Kirim',
                 'method' => 'post',
             ],
@@ -79,6 +78,7 @@ class AdminFoodGroupController extends Controller
     }
     public function import(Request $request)
     {
+        
         Excel::import(new GroupImport, $request->file('import'));
         return redirect()
         ->route('admin.food-group.index')

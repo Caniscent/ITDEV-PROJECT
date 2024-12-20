@@ -18,19 +18,11 @@ class GroupExport implements FromQuery, WithHeadings, WithMapping
 
     public function headings(): array
     {
-        return [
-            'No',
-            'Group',
-            'Description',
-        ];
+        return [ 'No', 'Group', 'Description', ];
     }
     public function map($row): array
     {
         $this->rowNumber++;
-        return [
-            $this->rowNumber,
-            $row->group,
-            $row->description,
-        ];
+        return [ $this->rowNumber, $row->group, $row->description,];
     }
 }
