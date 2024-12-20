@@ -58,10 +58,10 @@
         </div>
     </div>
  <!-- Tombol Aksi -->
- <div class="flex justify-end gap-4">
-  <x-secondary-button>
-      <a href="{{ route('admin.clean-food.index') }}">Kembali</a>
-  </x-secondary-button>
+ <div class="flex gap-4">
+    <x-secondary-button href="{{ route('admin.clean-food.index') }}">
+        Kembali
+     </x-secondary-button>
 </div>
 
   

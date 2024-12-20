@@ -21,13 +21,16 @@
                             <select id="status" name="status" class="form-control block w-full p-2 bg-white border border-gray-300
                              text-gray-900 text-sm rounded-lg focus:ring-indigo-500
                               focus:border-indigo-500 transition duration-150 ease-in-out">
-                              @if ($article->status == 'draft')
+                              
+                              @if ($article->status == 'draft' || 'published')
                               <option value="draft" {{ old('status', $article->status) == 'draft' ? 'selected' : '' }}>Draft</option>
                               <option value="published" {{ old('status', $article->status) == 'published' ? 'selected' : '' }}>Published</option>
                               <option value="archived" {{ old('status', $article->status) == 'archived' ? 'selected' : '' }}>Archived</option>
-                              @elseif ($article->status == 'published' || 'archived')
+                              {{-- @elseif ($article->status == 'archived')
                               <option value="published" {{ old('status', $article->status) == 'published' ? 'selected' : '' }}>Published</option>
                               <option value="archived" {{ old('status', $article->status) == 'archived' ? 'selected' : '' }}>Archived</option>
+                               --}}
+                            
                               @endif
 
                             </select>
@@ -52,8 +55,8 @@
                         </div>
 
                     <div class="flex  gap-4">
-                        <x-secondary-button>
-                            <a href="{{ route('admin.article.index') }}">Kembali</a>
+                        <x-secondary-button href="{{ route('admin.article.index') }}">
+                           Kembali
                         </x-secondary-button>
                         <x-primary-button>
                             {{ $page_meta['submit_text'] }}
