@@ -35,13 +35,13 @@
                 </div>
 
                 <!-- Forgot Password -->
-                @if (Route::has('password.request'))
+                {{-- @if (Route::has('password.request'))
                     <div class="text-center">
                         <a class="text-blue-400 hover:underline" href="{{ route('password.request') }}">
                             Lupa password anda?
                         </a>
                     </div>
-                @endif
+                @endif --}}
             </form>
         </div>
     </div>

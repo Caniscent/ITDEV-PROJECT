@@ -59,11 +59,11 @@
                     <input type="checkbox" name="remember" class="checkbox bg-blue-50" {{ old('remember') ? 'checked' : '' }}>
                     <span class="label-text text-black pr-[7rem]">Ingat Saya</span>
                     <!-- Forgot Password -->
-                    @if (Route::has('password.request'))
+                    {{-- @if (Route::has('password.request'))
                     <a class="text-blue-400 hover:underline" href="{{ route('password.request') }}">
                         Lupa password anda?
                     </a>
-                    @endif
+                    @endif --}}
                 </label>
             </div>
 
