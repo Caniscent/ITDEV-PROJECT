@@ -12,31 +12,31 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </label>
-            <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li class="{{ request()->routeIs('home') ? 'underline text-white' : '!text-gray-500' }}">
+            <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-blue-300 rounded-box w-52">
+                <li class="{{ request()->routeIs('home') ? 'underline text-black' : '' }}">
                     <a href="{{route('home')}}">Beranda</a>
                 </li>
-                <li class="{{ request()->routeIs('meal-plan.index') ? 'underline text-white' : '!text-gray-500' }}">
+                <li class="{{ request()->routeIs('meal-plan.index') ? 'underline text-black' : '' }}">
                     <a href="{{route('meal-plan.index')}}">Rencana Makan</a>
                 </li>
-                <li class="{{ request()->routeIs('article.index') ? 'underline text-white' : '!text-gray-500' }}">
+                <li class="{{ request()->routeIs('article.index') ? 'underline text-black' : '' }}">
                     <a href="{{route('article.index')}}">Artikel</a>
                 </li>
 
                 @auth
-                    <li class="{{ request()->routeIs('profile.index') ? 'underline text-white' : '!text-gray-500' }}">
+                    <li class="{{ request()->routeIs('profile.index') ? 'underline text-black' : '' }}">
                         <a href="{{route('profile.index')}}">Profil</a>
                     </li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <li class="!text-gray-500">
+                        <li class="">
                             <button>Keluar</button>
                         </li>
                     </form>
                 @endauth
 
                 @guest
-                    <li class="{{ request()->routeIs('login') ? 'underline text-white' : '!text-gray-500' }}">
+                    <li class="{{ request()->routeIs('login') ? 'underline text-black' : '' }}">
                         <a href="{{ route('login') }}">Masuk</a>
                     </li>
                 @endguest
@@ -56,16 +56,16 @@
             @auth
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost text-white">Pengaturan Akun</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 dark:bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <ul tabindex="0" class="dropdown-content menu bg-blue-300  rounded-box z-[1] w-52 p-2 shadow">
                     <li class="{{ request()->routeIs('profile.index') ? 'underline' : '' }}">
-                        <a class="text-white hover:underline" href="{{route('profile.index')}}">Profil</a>
+                        <a class="text-black hover:bg-blue-200" href="{{route('profile.index')}}">Profil</a>
                     </li>
                     <li class="{{ request()->routeIs('log.index') ? 'underline' : '' }}">
-                        <a class="text-white hover:underline" href="{{route('log.index')}}">Histori Rencana Makan</a>
+                        <a class="text-black hover:bg-blue-200" href="{{route('log.index')}}">Histori Rencana Makan</a>
                     </li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <li><button class="text-white hover:underline">Keluar</button></li>
+                        <li><button class="text-black hover:bg-blue-200 hover:underline">Keluar</button></li>
                     </form>
                 </ul>
             </div>

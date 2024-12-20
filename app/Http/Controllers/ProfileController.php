@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $user->age = $request->input('age');
         $user->save();
 
-        return redirect()->route('profile.index')->with('success', 'Profil berhasil dibuat.');
+        return redirect()->route('profile.index');
     }
 
     /**
@@ -112,6 +112,6 @@ class ProfileController extends Controller
         $user->delete();
 
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success','Akun sudah dihapus');
     }
 }
