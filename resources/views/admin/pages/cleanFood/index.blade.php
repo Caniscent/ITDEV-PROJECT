@@ -25,7 +25,7 @@
         </x-edit-button>
         <form action="{{ route('admin.food-import') }}" method="POST" enctype="multipart/form-data" class="flex items-center space-x-4">
             @csrf
-            <input type="file" name="import" required 
+            <input type="file" name="import" accept=".xlsx,.xls,.csv" required
                    class="block w-48 text-sm text-gray-500 file:mr-4 file:py-2 file:px-2 file:rounded file:border file:border-gray-300 file:text-sm file:font-semibold file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100">
             <x-edit-button type="submit" class="flex items-center justify-center space-x-2 px-2 py-2 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" class="w-5 h-5">
@@ -34,8 +34,8 @@
                 <span>Impor</span>
             </x-edit-button>
         </form>
-        
-        
+
+
     </div>
     <table id="Table" class="w-full text-sm border border-collapse border-gray-200 table-auto sm:text-base">
         <thead>
@@ -61,7 +61,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                                   </svg>
-                                  
+
                             </a>
                         </x-edit-button>
                         <x-edit-button class="h-8 bg-yellow-500 w-15 hover:bg-yellow-600">
@@ -69,10 +69,10 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                   </svg>
-                                  
+
                             </a>
                         </x-edit-button>
-                       
+
                         <form action="{{ route('admin.clean-food.destroy', $data->id) }}" method="POST" id="delete-form-{{ $data->id }}">
                             @csrf
                             @method('DELETE')
